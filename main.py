@@ -173,10 +173,6 @@ class MessageModal(discord.ui.Modal, title="Message à envoyer"):
 @app_commands.guild_only()
 @app_commands.check(est_autorise)
 async def annonce(interaction: discord.Interaction, role: discord.Role):
-    if role.is_default():
-        return await interaction.response.send_message(
-            "Le rôle @everyone n'est pas autorisé. Choisis un rôle opt-in.", ephemeral=True
-        )
     await interaction.response.send_modal(MessageModal(role))
 
 
